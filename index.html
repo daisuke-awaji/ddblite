@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ddblite demo</title>
+  <script type="module" crossorigin src="/ddblite/assets/index-C_GN9yfO.js"></script>
+  <link rel="stylesheet" crossorigin href="/ddblite/assets/index-D-gUAm91.css">
+</head>
+<body>
+<header>
+  <h1>ddblite</h1>
+  <span id="status" data-testid="status">起動中…</span>
+  <span class="spacer"></span>
+  <button id="sample" data-testid="sample">サンプルのテーブルを作る</button>
+  <button id="export" data-testid="export">書き出し</button>
+  <label class="button">読み込み<input id="import" data-testid="import" type="file" accept="application/json" hidden></label>
+  <button id="reset" data-testid="reset" class="danger">全テーブルを消す</button>
+</header>
+<main>
+  <nav>
+    <h2>テーブル <button id="refresh" data-testid="refresh" title="再読み込み">↻</button></h2>
+    <ul id="tables" data-testid="tables"></ul>
+  </nav>
+  <section id="items-pane">
+    <h2 id="items-title">項目</h2>
+    <div id="table-info" data-testid="table-info"></div>
+    <div class="toolbar">
+      <button id="prev" data-testid="prev" disabled>← 前</button>
+      <span id="page" data-testid="page"></span>
+      <button id="next" data-testid="next" disabled>次 →</button>
+    </div>
+    <div id="items" data-testid="items"></div>
+  </section>
+  <section id="partiql-pane">
+    <h2>PartiQL</h2>
+    <textarea id="stmt" data-testid="stmt" rows="4" spellcheck="false">SELECT * FROM "Music" WHERE Artist = 'Pixies'</textarea>
+    <div class="toolbar"><button id="run" data-testid="run">実行（Ctrl+Enter）</button></div>
+    <div id="result" data-testid="result"></div>
+  </section>
+</main>
+</body>
+</html>
