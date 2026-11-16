@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ddblite demo</title>
-  <script type="module" crossorigin src="/ddblite/assets/index-C_GN9yfO.js"></script>
-  <link rel="stylesheet" crossorigin href="/ddblite/assets/index-D-gUAm91.css">
+  <script type="module" crossorigin src="/ddblite/assets/index-BMRdYgp_.js"></script>
+  <link rel="stylesheet" crossorigin href="/ddblite/assets/index-CY3qwyQw.css">
 </head>
 <body>
 <header>
@@ -31,11 +31,36 @@
       <button id="next" data-testid="next" disabled>次 →</button>
     </div>
     <div id="items" data-testid="items"></div>
+    <div id="editor" data-testid="editor" hidden>
+      <h2 id="editor-title" data-testid="editor-title">項目の編集（DynamoDB JSON）</h2>
+      <p class="note" id="editor-help">表の行を選ぶと、その項目をここで編集できます。「新規」はキーの雛形から始めます。値は AttributeValue の形で書きます（例 <code>{"Artist": {"S": "Pixies"}, "Year": {"N": "1989"}}</code>）。</p>
+      <p class="warn" id="editor-keynote" data-testid="editor-keynote"></p>
+      <textarea id="editor-json" data-testid="editor-json" rows="10" spellcheck="false" placeholder="行を選ぶか「新規」を押してください"></textarea>
+      <div class="toolbar">
+        <button id="editor-save" data-testid="editor-save" disabled>保存（PutItem）</button>
+        <button id="editor-new" data-testid="editor-new">新規</button>
+        <span class="spacer"></span>
+        <button id="editor-delete" data-testid="editor-delete" class="danger" disabled>削除（DeleteItem）</button>
+      </div>
+      <div id="editor-status" data-testid="editor-status"></div>
+    </div>
   </section>
   <section id="partiql-pane">
     <h2>PartiQL</h2>
+    <div class="toolbar">
+      <label>サンプル <select id="samples" data-testid="samples"><option value="">（選ぶと入力欄に入ります）</option></select></label>
+    </div>
+    <p class="note" id="sample-note" data-testid="sample-note"></p>
     <textarea id="stmt" data-testid="stmt" rows="4" spellcheck="false">SELECT * FROM "Music" WHERE Artist = 'Pixies'</textarea>
-    <div class="toolbar"><button id="run" data-testid="run">実行（Ctrl+Enter）</button></div>
+    <div class="toolbar">
+      <label>送り方 <select id="mode" data-testid="mode">
+        <option value="single">1 文（ExecuteStatement）</option>
+        <option value="batch">バッチ（BatchExecuteStatement）</option>
+        <option value="transaction">トランザクション（ExecuteTransaction）</option>
+      </select></label>
+      <button id="run" data-testid="run">実行（Ctrl+Enter）</button>
+    </div>
+    <p class="note" id="mode-note" data-testid="mode-note"></p>
     <div id="result" data-testid="result"></div>
   </section>
 </main>
